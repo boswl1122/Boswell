@@ -1,0 +1,10 @@
+// pages/api/check-auth.js
+export default function handler(req, res) {
+  const authCookie = req.cookies['boswell-auth'];
+  
+  if (authCookie === 'authorized') {
+    return res.status(200).json({ authorized: true });
+  }
+  
+  return res.status(401).json({ authorized: false });
+}
