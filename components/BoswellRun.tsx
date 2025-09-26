@@ -298,25 +298,30 @@ WRITING DIRECTIVES
  - After the opener, maintain strict chronological order. No flashbacks or "meanwhile" jumps.
  - Weave background context into the flow (avoid frequent subheads).
 3) PROSE & STYLE
- - SLOW, PATIENT, IMMERSIVE writing that dwells in scenes rather than rushing through events
- - When you reach an important moment, EXPAND it: describe the room, the atmosphere, body language, unspoken tensions
- - Use all five senses - what did the room smell like? What sounds were in the background?
- - Longer paragraphs (8–12 sentences) with varied sentence length
- - For crucial moments, slow time down - a 5-minute conversation should take 3-4 paragraphs
+ - SLOW, PATIENT, IMMERSIVE writing that dwells in scenes rather than rushing through events.
+ - When you reach an important moment, EXPAND it using NotebookLM outputs first (quotes, scene details, artifacts). You may add basic external context only if it’s obvious, factual, and necessary for reader understanding (e.g., what a stock split is, what AT&T was in 1994). Keep such context brief and neutral; if a detail isn’t in sources, omit it and log it in Editor’s Notes.
+ - All detail should illuminate character, stakes, or context. Avoid generic filler; background is welcome when it clarifies or enriches the scene.
+ - Use 8–12 sentence paragraphs, varied in rhythm.
+ - No invented settings or sensory filler. Prefer scene details from NotebookLM Scene Cards. If a detail (room, smell, weather) isn’t sourced, leave it out.
+ - For crucial moments, slow time down — a 5-minute conversation may take 3–4 full paragraphs.
 4) SCENE DEVELOPMENT
- - Before each quote, SET THE SCENE: Where are they? What's the context? What just happened?
- - After significant quotes, PAUSE and explore reactions - facial expressions, silence, what went unsaid
- - For important scenes: describe the setting, the weather, what people wore, their body language
- - Each major scene requires 800-1,200 words minimum
- - Transitional passages between scenes: 300-500 words
+ - Introduce every quote with scene framing (where, who, what just happened).
+ - After each, pause for reaction and subtext (expressions, silences, what was implied).
+ - For important scenes: develop them fully, like a cinematic sequence. Ground readers in setting, time, and stakes before dialogue. Use NotebookLM quotes and evidence as anchors. 
+ - Favor long verbatim quotes from 2B Dialogue Bank when available. If no direct quote exists, paraphrase neutrally and cite.
+ - Insert contextual explainers only when essential (e.g., how cellular towers worked, what Netscape Navigator was).
+ - Length Guidance: Major scenes should run 800–1,200 words; transitional passages 300–500. Do not pad with invented sensory detail; deepen with sourced evidence, reactions, and precise context.
 5) PACING REQUIREMENTS
  - Identify the 5-7 most important scenes/moments from the research
- - You do NOT need to include every fact from NotebookLM - be selective
+ - You do not need to include every fact. Select only what reveals character, stakes, or tension. Do not invent detail.
+ - If you must add outside context, flag it as basic factual background and keep it brief (e.g., what a stock split is).
+ - Prioritize NotebookLM evidence first, supplement with light background only when necessary for clarity.
  - Better to fully develop 5 scenes than mention 20 superficially
- - When you uncover something meaningful, STOP AND EXPLORE IT FULLY
+ - When you uncover something meaningful, STOP AND EXPLORE IT FULLY. Slow down in each scene: dialogue, gestures, atmosphere, consequences.
  - For family scenes, capture the dynamics in detail
+ - Use NotebookLM 2B Dialogue Bank and evidence bullets to enrich.
 6) LENGTH REQUIREMENT
- - Generate 12,000-15,000 tokens through SCENIC DEPTH, not padding
+ - Generate 18k–22k tokens tokens through SCENIC DEPTH, not padding
  - This naturally creates 7,000-8,000 words through proper scene development
  - Do not conclude until you've fully developed at least 5-7 major scenes
  - If approaching the endpoint before this length, deepen existing scenes rather than rushing to conclude
@@ -333,6 +338,34 @@ MANDATORY SCOPE ADHERENCE
 OUTPUT
 - A single continuous narrative chapter (18,000-22,000 tokens minimum).
 - End with a short "Editor's Notes" (gaps/fact-check list) and a brief bibliography pointer to NB-LM citations.
+
+Final Reminder
+- If a detail cannot be supported by NotebookLM sources or obvious factual background, omit it.
+- Log any gaps, uncertainties, or missing context in the Editor’s Notes at the end of the chapter.
+
+SOURCE MATERIALS CONTEXT
+The following outputs are NOT equal chapters. 
+They are staged research artifacts for you to write a full chapter, each with a different role
+- STEP 2A: Chronology & Cast. 
+  Skeleton timeline of turning points (with dates) and key people. 
+  Role = establish strict chronology and the cast of characters. 
+  Think of this as the “bones” of the chapter.
+- STEP 2B: Evidence Bank. 
+  Expanded detail for each turning point, including quotes, scene cards, numbers, and concept explainers. 
+  Role = provide factual “meat” and narrative raw material. 
+  This is the **primary evidence base**. 
+  Use it to build authentic Isaacson-style scenes.
+- STEP 2C: Narrative Bridges. 
+  Short practice passages (400–550 words) that demonstrate how to weave 2A + 2B into flowing prose. 
+  Role = stylistic model for transitions, pacing, and causal logic. 
+  **Important:** 2C is only an example of how to connect material.
+
+Together:  
+- 2A = bones (timeline + cast)  
+- 2B = meat (quotes, detail, evidence)  
+- 2C = connective tissue demo (style only)
+
+Use this staged material to generate the full chapter.
 
 SOURCE MATERIALS FOLLOW
 [VOICE GUIDE]`,
@@ -798,7 +831,7 @@ SOURCE MATERIALS FOLLOW
                       <textarea
                         className={`w-full p-3 rounded-lg ${input} text-sm`}
                         rows={3}
-                        placeholder="Paste the narrative bridges from NotebookLM here..."
+                        placeholder="Paste the full Step 2C result from NotebookLM here…"
                         value={nbOut3}
                         onChange={(e) => setNbOut3(e.target.value)}
                       />
