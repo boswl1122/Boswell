@@ -1405,7 +1405,7 @@ SOURCE MATERIALS FOLLOW
                           className={`w-full p-4 rounded-lg ${input} text-sm`}
                           style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}
                           rows={6}
-                          placeholder="Paste the narrative bridges from NotebookLM here..."
+                          placeholder="Paste the full Step 2C result from NotebookLM here..."
                           value={nbOut3}
                           onChange={(e) => setNbOut3(e.target.value)}
                         />
