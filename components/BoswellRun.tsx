@@ -573,7 +573,7 @@ SOURCE MATERIALS FOLLOW
     : "bg-white hover:bg-stone-50 border-2 border-stone-300 hover:border-stone-800 text-stone-700 hover:text-stone-800 shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 focus:outline-none";
 
   return (
-      <div className={`boswell-root min-h-screen ${pageBg}`} style={pageStyle}>
+     <div className={`boswell-root min-h-screen overflow-x-hidden ${pageBg}`} style={pageStyle}>
       {/* Enhanced sticky header */}
       <div className={`sticky top-0 z-30 ${headerBg} border-b ${border} shadow-sm`}>
         <div className="max-w-7xl mx-auto px-6 py-8 flex items-center justify-between">
@@ -1418,20 +1418,20 @@ SOURCE MATERIALS FOLLOW
 
             {/* Assembled prompt section */}
             <div className={`mt-10 rounded-lg ${panel} p-8`}>
-              <div className="flex items-center justify-between mb-6">
-                <div>
-                  <h2 className="text-2xl font-bold" style={{ fontFamily: 'Playfair Display, Georgia, serif', color: BRAND_COLOR }}>
-                    Step 3: Final Assembly
-                  </h2>
-                  <p className={`text-sm ${muted} mt-2 italic`}>Configure AI model and review complete prompt</p>
-                </div>
-                <div className="flex gap-4 items-center">
-                  <button 
-                    onClick={() => copy(assembledAiPrompt)} 
-                    className={`text-sm font-medium transition-all duration-200 hover:opacity-70 focus:outline-none`}
-                    style={{ color: BRAND_COLOR, textDecoration: 'underline' }}
-                  >
-                    Copy Full Prompt
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+        <div>
+            <h2 className="text-2xl font-bold" style={{ fontFamily: 'Playfair Display, Georgia, serif', color: BRAND_COLOR }}>
+              Step 3: Final Assembly
+            </h2>
+              <p className={`text-sm ${muted} mt-2 italic`}>Configure AI model and review complete prompt</p>
+          </div>
+          <div className="flex flex-wrap gap-4 items-center">
+            <button 
+      onClick={() => copy(assembledAiPrompt)} 
+      className={`text-sm font-medium transition-all duration-200 hover:opacity-70 focus:outline-none whitespace-nowrap shrink-0`}
+      style={{ color: BRAND_COLOR }}
+    >
+      Copy Full Prompt
                   </button>
                   <button
                     onClick={runAndOpenGenerateTab}
@@ -1530,7 +1530,7 @@ SOURCE MATERIALS FOLLOW
                     {chapter}
                   </h3>
                 )}
-                <div className="flex items-center gap-6 mt-4">
+                <div className="flex flex-wrap items-center gap-3 sm:gap-6 mt-4">
                   <p className={`text-sm ${muted} font-medium`}>Using {selectedModelInfo?.name || 'Selected AI Model'}</p>
                   {loadingAi && (
                     <div className="flex items-center gap-3">
@@ -1543,34 +1543,34 @@ SOURCE MATERIALS FOLLOW
                   )}
                 </div>
               </div>
-              <div className="flex gap-4">
-                <button 
-                  onClick={() => setTab("prep")} 
-                  className={`text-sm font-medium transition-all duration-200 hover:opacity-70 focus:outline-none`}
-                  style={{ color: BRAND_COLOR, textDecoration: 'underline' }}
-                >
-                  ← Back to Preparation
-                </button>
-                {!loadingAi ? (
-                  <button 
-                    onClick={runAi} 
-                    className={`px-5 py-3 rounded-lg text-sm font-semibold transition-all duration-300 ${btnSecondary}`}
-                  >
-                    Re-run Generation
-                  </button>
-                ) : (
-                  <button 
-                    onClick={stopAi} 
-                    className={`px-5 py-3 rounded-lg text-sm font-semibold transition-all duration-300 text-white focus:outline-none`}
-                    style={{ 
-                      background: 'linear-gradient(135deg, #dc2626, #b91c1c)',
-                      boxShadow: '0 4px 14px 0 rgba(220, 38, 38, 0.25)'
-                    }}
-                  >
-                    Stop Generation
-                  </button>
-                )}
-              </div>
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 w-full sm:w-auto sm:justify-end">
+  <button 
+    onClick={() => setTab("prep")} 
+    className={`text-sm font-medium transition-all duration-200 hover:opacity-70 focus:outline-none shrink-0`}
+    style={{ color: BRAND_COLOR, textDecoration: 'underline' }}
+  >
+    ← Back to Preparation
+  </button>
+  {!loadingAi ? (
+    <button 
+      onClick={runAi} 
+      className={`px-5 py-3 rounded-lg text-sm font-semibold transition-all duration-300 ${btnSecondary} shrink-0`}
+    >
+      Re-run Generation
+    </button>
+  ) : (
+    <button 
+      onClick={stopAi} 
+      className={`px-5 py-3 rounded-lg text-sm font-semibold transition-all duration-300 text-white focus:outline-none shrink-0`}
+      style={{ 
+        background: 'linear-gradient(135deg, #dc2626, #b91c1c)',
+        boxShadow: '0 4px 14px 0 rgba(220, 38, 38, 0.25)'
+      }}
+    >
+      Stop Generation
+    </button>
+  )}
+</div>
             </div>
             
             {aiError && (
