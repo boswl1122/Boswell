@@ -44,67 +44,40 @@ h4, h5, h6 {
 * {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
-/* === Mobile quick-fix for Boswell (no JSX changes needed) === */
+/* === Boswell minimal mobile + underline patch === */
+
+/* Always underline buttons styled as links (e.g. "Copy Full Prompt") */
+.boswell-root button[style*="text-decoration"],
+.boswell-root button[style*="text-decoration"] * {
+  text-decoration: underline !important;
+}
+
 @media (max-width: 640px) {
-  /* Stop iOS auto-zoom on focus */
+  /* Stop iOS from zooming when tapping inputs */
   .boswell-root input,
   .boswell-root textarea,
   .boswell-root select {
     font-size: 16px !important;
   }
 
-  /* Let action bars wrap so buttons don't overflow off-screen */
-  .boswell-root .flex.items-center.justify-between,
-  .boswell-root .flex.gap-4,
-  .boswell-root .flex.gap-4.items-center,
-  .boswell-root .flex.gap-4.justify-end {
-    flex-wrap: wrap;
-    gap: 12px;
+  /* Wrap action rows so buttons don’t spill off-screen */
+  .boswell-root .flex.gap-4 {
+    flex-wrap: wrap !important;
+    row-gap: 12px !important;
   }
 
-  /* Prevent long link labels from forcing overflow */
-  .boswell-root button,
-  .boswell-root a {
+  /* Make wide buttons behave on small screens */
+  .boswell-root .flex.gap-4 > button,
+  .boswell-root .flex.gap-4 > a {
     max-width: 100%;
     white-space: normal;
-    word-break: break-word;
+    overflow-wrap: anywhere;
+    flex: 1 1 auto;
   }
 
-  /* Keep the tutorial overlay panel inside the viewport */
+  /* Tutorial overlay stays inside viewport */
   .boswell-root .fixed.inset-0 .rounded-xl {
     max-height: 85vh;
     overflow-y: auto;
   }
-}
-/* ===== Boswell mobile sanity fixes (non-desktop only) ===== */
-@media (max-width: 640px) {
-  /* Prevent iOS zoom on focus (inputs <16px cause zoom) */
-  .boswell-root input,
-  .boswell-root textarea,
-  .boswell-root select {
-    font-size: 16px !important;
-  }
-
-  /* Let tight flex rows wrap so buttons/links don't spill off-screen */
-  .boswell-root .flex {
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  /* Keep big CTA buttons from overflowing on small screens */
-  .boswell-root button {
-    max-width: 100%;
-    white-space: normal;     /* allow text to wrap onto two lines */
-    overflow-wrap: anywhere; /* break long labels if needed */
-  }
-
-  /* Nudge header action buttons (Guide Me / Light-Dark) to the right */
-  .boswell-root .sticky .flex.items-center {
-    justify-content: space-between;
-  }
-}
-
-/* If a button was intended to look like a link, force underline even if Tailwind resets it */
-.boswell-root button[style*="text-decoration"] {
-  text-decoration: underline !important;
 }
