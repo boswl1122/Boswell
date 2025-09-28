@@ -1546,7 +1546,7 @@ SOURCE MATERIALS FOLLOW
               <div className="flex flex-wrap items-center gap-3 sm:gap-4 w-full sm:w-auto sm:justify-end">
   <button 
     onClick={() => setTab("prep")} 
-    className={`text-sm font-medium transition-all duration-200 hover:opacity-70 focus:outline-none shrink-0`}
+    className={`text-sm font-medium underline transition-all duration-200 hover:opacity-70 focus:outline-none shrink-0`}
     style={{ color: BRAND_COLOR, textDecoration: 'underline' }}
   >
     ← Back to Preparation

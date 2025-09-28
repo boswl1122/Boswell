@@ -44,3 +44,35 @@ h4, h5, h6 {
 * {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
+/* === Mobile quick-fix for Boswell (no JSX changes needed) === */
+@media (max-width: 640px) {
+  /* Stop iOS auto-zoom on focus */
+  .boswell-root input,
+  .boswell-root textarea,
+  .boswell-root select {
+    font-size: 16px !important;
+  }
+
+  /* Let action bars wrap so buttons don't overflow off-screen */
+  .boswell-root .flex.items-center.justify-between,
+  .boswell-root .flex.gap-4,
+  .boswell-root .flex.gap-4.items-center,
+  .boswell-root .flex.gap-4.justify-end {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* Prevent long link labels from forcing overflow */
+  .boswell-root button,
+  .boswell-root a {
+    max-width: 100%;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  /* Keep the tutorial overlay panel inside the viewport */
+  .boswell-root .fixed.inset-0 .rounded-xl {
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+}
