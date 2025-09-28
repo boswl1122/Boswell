@@ -76,3 +76,35 @@ h4, h5, h6 {
     overflow-y: auto;
   }
 }
+/* ===== Boswell mobile sanity fixes (non-desktop only) ===== */
+@media (max-width: 640px) {
+  /* Prevent iOS zoom on focus (inputs <16px cause zoom) */
+  .boswell-root input,
+  .boswell-root textarea,
+  .boswell-root select {
+    font-size: 16px !important;
+  }
+
+  /* Let tight flex rows wrap so buttons/links don't spill off-screen */
+  .boswell-root .flex {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* Keep big CTA buttons from overflowing on small screens */
+  .boswell-root button {
+    max-width: 100%;
+    white-space: normal;     /* allow text to wrap onto two lines */
+    overflow-wrap: anywhere; /* break long labels if needed */
+  }
+
+  /* Nudge header action buttons (Guide Me / Light-Dark) to the right */
+  .boswell-root .sticky .flex.items-center {
+    justify-content: space-between;
+  }
+}
+
+/* If a button was intended to look like a link, force underline even if Tailwind resets it */
+.boswell-root button[style*="text-decoration"] {
+  text-decoration: underline !important;
+}
