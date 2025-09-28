@@ -573,7 +573,7 @@ SOURCE MATERIALS FOLLOW
     : "bg-white hover:bg-stone-50 border-2 border-stone-300 hover:border-stone-800 text-stone-700 hover:text-stone-800 shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 focus:outline-none";
 
   return (
-      <div className={`boswell-root min-h-screen ${pageBg}`} style={pageStyle}>
+    <div className={`min-h-screen ${pageBg}`} style={pageStyle}>
       {/* Enhanced sticky header */}
       <div className={`sticky top-0 z-30 ${headerBg} border-b ${border} shadow-sm`}>
         <div className="max-w-7xl mx-auto px-6 py-8 flex items-center justify-between">
@@ -1588,8 +1588,7 @@ SOURCE MATERIALS FOLLOW
 
             {/* Enhanced output display */}
             <div 
-            ref={outputRef}
-             data-output-panel="true"
+              ref={outputRef}
               className={`w-full p-8 rounded-lg ${input} text-sm leading-relaxed overflow-y-auto transition-all duration-500`}
               style={{ 
                 fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
@@ -1662,67 +1661,6 @@ SOURCE MATERIALS FOLLOW
           </div>
         )}
       </div>
-
-      {/* 👇 Add this here, before the final closing </div> */}
-      <style jsx global>{`
-        @media (max-width: 640px) {
-          .boswell-root .px-6 { padding-left: 1rem !important; padding-right: 1rem !important; }
-          .boswell-root .px-8 { padding-left: 1rem !important; padding-right: 1rem !important; }
-          .boswell-root .py-8 { padding-top: 1rem !important; padding-bottom: 1rem !important; }
-          .boswell-root .p-8  { padding: 1rem !important; }
-          .boswell-root .py-4 { padding-top: .75rem !important; padding-bottom: .75rem !important; }
-          .boswell-root .p-6  { padding: 1rem !important; }
-
-          .boswell-root .sticky.top-0 .mx-auto > .flex {
-            flex-direction: column !important;
-            gap: .75rem !important;
-            align-items: stretch !important;
-          }
-          .boswell-root .sticky.top-0 .mx-auto > .flex > div:last-child {
-            display: flex !important;
-            flex-direction: column !important;
-            width: 100% !important;
-            gap: .5rem !important;
-          }
-          .boswell-root .sticky.top-0 button {
-            width: 100% !important;
-            font-size: .875rem !important;
-            padding: .5rem .75rem !important;
-          }
-
-          .boswell-root svg.w-8.h-8 { width: 2.5rem !important; height: 2.5rem !important; stroke-width: 2 !important; }
-          .boswell-root h1.text-4xl { font-size: 1.5rem !important; line-height: 2rem !important; }
-
-          .boswell-root .flex.gap-4.mb-10 {
-            flex-direction: column !important;
-          }
-          .boswell-root .flex.gap-4.mb-10 > button {
-            width: 100% !important;
-            white-space: nowrap !important;
-            font-size: .875rem !important;
-            padding: .75rem 1rem !important;
-          }
-
-          .boswell-root .rounded-lg.p-8,
-          .boswell-root .rounded-xl.p-8 {
-            padding: 1rem !important;
-          }
-
-          .boswell-root textarea,
-          .boswell-root input[type="text"],
-          .boswell-root input[type="password"] {
-            font-size: .9rem !important;
-            padding: .75rem !important;
-          }
-
-          .boswell-root [data-output-panel="true"] {
-            min-height: 360px !important;
-            max-height: 520px !important;
-          }
-
-          .boswell-root button { white-space: nowrap !important; }
-        }
-      `}</style>
     </div>
   );
 }
