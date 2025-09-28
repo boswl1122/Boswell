@@ -81,3 +81,27 @@ h4, h5, h6 {
     overflow-y: auto;
   }
 }
+/* Use VisualViewport height when available for the overlay */
+.tutorial-overlay {
+  height: var(--vvh, 100dvh);
+}
+
+/* Make sure focused fields aren’t hidden under the keyboard; keep scroll smooth */
+.tutorial-panel {
+  scroll-padding-bottom: 20vh;
+  overscroll-behavior: contain;
+}
+
+/* Focused inputs get a little top margin so snap-to-focus doesn’t feel jumpy */
+@media (max-width: 640px) {
+  .tutorial-panel input,
+  .tutorial-panel textarea,
+  .tutorial-panel select {
+    scroll-margin: 96px;
+  }
+}
+/* Always underline link-style buttons (like "Copy Full Prompt") */
+.boswell-root button[style="text-decoration"],
+.boswell-root button[style*="text-decoration"] * {
+  text-decoration: underline !important;
+}

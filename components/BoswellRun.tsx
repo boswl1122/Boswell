@@ -137,6 +137,22 @@ export default function BoswellRun() {
     }
   }, [displayedOutput]);
 
+  // Keep overlay height stable when the mobile keyboard opens/closes
+  useEffect(() => {
+    if (!window.visualViewport) return;
+    const vv = window.visualViewport;
+    const setVvh = () => {
+      document.documentElement.style.setProperty('--vvh', `${vv.height}px` );
+    };
+    setVvh();
+    vv.addEventListener('resize', setVvh);
+    vv.addEventListener('scroll', setVvh);
+    return () => {
+      vv.removeEventListener('resize', setVvh);
+      vv.removeEventListener('scroll', setVvh);
+    };
+  }, []);
+
   // Copy helper
   async function copy(text: string) {
     try {
