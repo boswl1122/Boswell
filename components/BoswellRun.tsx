@@ -15,6 +15,10 @@ export default function BoswellRun() {
     "Chronology, key quotes, key scenes, and all information related to this chapter (enough for a full draft)."
   );
   const [notes, setNotes] = useState("");
+  // Opening instruction (freeform), with presets available
+  const [openingInstruction, setOpeningInstruction] = useState(
+    "Begin with a vivid, cinematic grounded scene from the start of the chapter's timeline that captures the central tension without skipping ahead."
+  );
 
   // AI Model Selection
   const [selectedModel, setSelectedModel] = useState("grok-4-fast-reasoning");
@@ -32,11 +36,10 @@ export default function BoswellRun() {
 
   // Voice guide / exemplar
   const [voiceGuide, setVoiceGuide] = useState(`Voice Guide
-- Open with a vivid, grounded scene from the start of the chapters timeline. Capture the tension without revealing outcomes or skipping ahead.
 - After the opener: strict chronology (no time-jumps/flashbacks).
 - Balance scene and exposition; include concrete physical detail.
 - Quotes: introduce speaker + circumstance; group quotes to build an idea.
-- MINIMUM 8-12 sentences per paragraph (this is non-negotiable)
+- 1-6 sentences per paragraph 
 - Prefer commas/periods over em dashes; steady, explanatory tone.
 - Every detail must advance the narrative or reveal character.
 - End with a concrete scene or single sharp observation
@@ -294,6 +297,12 @@ Word count 400–550 [YES/NO] • ≥2 Because→Therefore [YES/NO] • Time anc
   );
 
   // Voice guide / exemplar
+  const openingDirective = useMemo(() => {
+    const t = (openingInstruction || "").trim();
+    return t
+      ? t
+      : "Begin with a vivid, cinematic grounded scene from the start of the chapter's timeline that captures the central tension without skipping ahead.";
+  }, [openingInstruction]);
   const aiSystemHeader = useMemo(
     () =>
       `You are writing an ORIGINAL biography chapter in the STYLE of Walter Isaacson.
@@ -308,7 +317,7 @@ ASSIGNMENT
 
 WRITING DIRECTIVES
 1) OPENING
- - Begin with a vivid, cinematic scene that captures the chapter's central tension.
+ - ${openingDirective}
  - Ground time, place, characters, and stakes immediately.
 2) STRUCTURE
  - After the opener, maintain strict chronological order. No flashbacks or "meanwhile" jumps.
