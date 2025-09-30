@@ -598,7 +598,7 @@ SOURCE MATERIALS FOLLOW
             <img
               src="/logo.png"
               alt="Boswell"
-              className="w-8 h-8"
+              className="w-16 h-16"
               aria-label="Boswell"
             />
             <div>
