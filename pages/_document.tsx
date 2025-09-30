@@ -7,6 +7,7 @@ export default function Document() {
       <Head>
         {/* Enables proper mobile scaling */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
         {/* Optional: nicer mobile address-bar color */}
         {/* <meta name="theme-color" content="#b45a06" /> */}
       </Head>
