@@ -1285,7 +1285,7 @@ SOURCE MATERIALS FOLLOW
                       <textarea
                         className={`w-full p-4 rounded-lg ${input} text-sm transition-all`}
                         style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}
-                        rows={8}
+                        rows={16}
                         placeholder="Paste a short style sample you can reference (can be deleted later)..."
                         value={voiceExemplar}
                         onChange={(e) => setVoiceExemplar(e.target.value)}
