@@ -1246,7 +1246,7 @@ SOURCE MATERIALS FOLLOW
                       className={`w-full p-4 rounded-lg ${input} transition-all font-medium`}
                       style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}
                       rows={4}
-                      placeholder="Additional context or specific requirements..."
+                      placeholder="Additional context or specific requirements. An example would be the end of the previous chapter or key themes to focus on..."
                       value={notes}
                       onChange={(e) => setNotes(e.target.value)}
                     />
