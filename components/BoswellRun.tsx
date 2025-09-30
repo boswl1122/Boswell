@@ -15,6 +15,7 @@ export default function BoswellRun() {
     "Chronology, key quotes, key scenes, and all information related to this chapter (enough for a full draft)."
   );
   const [notes, setNotes] = useState("");
+  const [openingStyle, setOpeningStyle] = useState("Open with a vivid, grounded scene from the start of the chapter's timeline. Capture the tension without revealing outcomes or skipping ahead.");
 
   // AI Model Selection
   const [selectedModel, setSelectedModel] = useState("grok-4-fast-reasoning");
@@ -31,8 +32,9 @@ export default function BoswellRun() {
   const selectedModelInfo = availableModels.find(m => m.id === selectedModel);
 
   // Voice guide / exemplar
-  const [voiceGuide, setVoiceGuide] = useState(`Voice Guide
-- Open with a vivid, grounded scene from the start of the chapters timeline. Capture the tension without revealing outcomes or skipping ahead.
+  const [voiceGuide, setVoiceGuide] = useState(() => {
+    const baseGuide = `Voice Guide
+- ${openingStyle || "Open with a vivid, grounded scene from the start of the chapter's timeline. Capture the tension without revealing outcomes or skipping ahead."}
 - After the opener: strict chronology (no time-jumps/flashbacks).
 - Balance scene and exposition; include concrete physical detail.
 - Quotes: introduce speaker + circumstance; group quotes to build an idea.
@@ -46,7 +48,9 @@ export default function BoswellRun() {
 - Maximum ONE short concluding paragraph if needed
 - When someone new appears, briefly establish who they are in relation to the protagonist
 - Let scenes carry meaning without explaining them
-`);
+`;
+    return baseGuide;
+  });
 
   const [voiceExemplar, setVoiceExemplar] = useState(`He was slow in learning how to talk. “My parents were so worried,” he later recalled, “that they consulted a doctor.” Even after he had begun using words, sometime after the age of 2, he developed a quirk that prompted the family maid to dub him “der Depperte,” the dopey one, and others in his family to label him as “almost backwards.” Whenever he had something to say, he would try it out on himself, whispering it softly until it sounded good enough to pronounce aloud. “Every sentence he uttered,” his worshipful younger sister recalled, “no matter how routine, he repeated to himself softly, moving his lips.” It was all very worrying, she said. “He had such difficulty with language that those around him feared he would never learn.” ¹ His slow development was combined with a cheeky rebelliousness toward authority, which led one schoolmaster to send him packing and another to amuse history by declaring that he would never amount to much. These traits made Albert Einstein the patron saint of distracted school kids everywhere.² But they also helped to make him, or so he later surmised, the most creative scientific genius of modern times. His cocky contempt for authority led him to question received wisdom in ways that well-trained acolytes in the academy never contemplated. And as for his slow verbal development, he came to believe that it allowed him to observe with wonder the everyday phenomena that others took for granted. “When I ask myself how it happened that I in particular discovered the relativity theory, it seemed to lie in the following circumstance,” Einstein once explained. “The ordinary adult never bothers his head about the problems of space and time. These are things he has thought of as a child. But I developed so slowly that I began to wonder about space and time only when I was already grown up. Consequently, I probed more deeply into the problem than an ordinary child would have.” ³ Einstein’s developmental problems have probably been exaggerated, perhaps even by himself, for we have some letters from his adoring grandparents saying that he was just as clever and endearing as every grandchild is. But throughout his life, Einstein had a mild form of echolalia, causing him to repeat phrases to himself, two or three times, especially if they amused him. And he generally preferred to think in pictures, most notably in famous thought experiments, such as imagining watching lightning strikes from a moving train or experiencing gravity while inside a falling elevator. “I very rarely think in words at all,” he later told a psychologist. “A thought comes, and I may try to express it in words afterwards.”⁴ Einstein was descended, on both parents’ sides, from Jewish tradesmen and peddlers who had, for at least two centuries, made modest livings in the rural villages of Swabia in southwestern Germany. With each generation they had become, or at least so they thought, increasingly assimilated into the German culture that they loved. Although Jewish by cultural designation and kindred instinct, they displayed scant interest in the religion or its rituals. Einstein regularly dismissed the role that his heritage played in shaping who he became. “Exploration of my ancestors,” he told a friend late in life, “leads nowhere.”⁵ That’s not fully true. He was blessed by being born into an independent-minded and intelligent family line that valued education, and his life was certainly affected, in ways both beautiful and tragic, by membership in a religious heritage that had a distinctive intellectual tradition and a history of being both outsiders and wanderers. Of course, the fact that he happened to be Jewish in Germany in the early twentieth century made him more of an outsider, and more of a wanderer, than he would have preferred—but that, too, became integral to who he was and the role he would play in world history. Einstein’s father, Hermann, was born in 1847 in the Swabian village of Buchau, whose thriving Jewish community was just beginning to enjoy the right to practice any vocation. Hermann showed “a marked inclination for mathematics,”⁶ and his family was able to send him seventy-five miles north to Stuttgart for high school. But they could not afford to send him to a university, most of which were closed to Jews in any event, so he returned home to Buchau to go into trade. A few years later, as part of the general migration of rural German Jews into industrial centers during the late nineteenth century, Hermann and his parents moved thirty-five miles away to the more prosperous town of Ulm, which prophetically boasted as its motto “Ulmenses sunt mathematici,” the people of Ulm are mathematicians.⁷ There he became a partner in a cousin’s featherbed company. He was “exceedingly friendly, mild and wise,” his son would recall.⁸ With a gentleness that blurred into docility, Hermann was to prove inept as a businessman and forever impractical in financial matters. But his docility did make him well suited to be a genial family man and good husband to a strong-willed woman. At age 29, he married Pauline Koch, eleven years his junior.`);
 
@@ -308,7 +312,7 @@ ASSIGNMENT
 
 WRITING DIRECTIVES
 1) OPENING
- - Begin with a vivid, cinematic scene that captures the chapter's central tension.
+ - ${openingStyle || "Begin with a vivid, cinematic scene that captures the chapter's central tension."}
  - Ground time, place, characters, and stakes immediately.
 2) STRUCTURE
  - After the opener, maintain strict chronological order. No flashbacks or "meanwhile" jumps.
@@ -385,7 +389,7 @@ Use this staged material to generate the full chapter.
 
 SOURCE MATERIALS FOLLOW
 [VOICE GUIDE]`,
-    [kb, chapter, goal, subject]
+    [kb, chapter, goal, subject, openingStyle]
   );
 
   const assembledAiPrompt = useMemo(() => {
@@ -716,6 +720,21 @@ SOURCE MATERIALS FOLLOW
                         value={subject}
                         onChange={(e) => setSubject(e.target.value)}
                       />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold mb-2" style={{ color: BRAND_COLOR }}>
+                        Chapter Opening Style
+                      </label>
+                      <textarea
+                        className={`w-full p-3 rounded-lg ${input}`}
+                        rows={3}
+                        placeholder="e.g., Open with a vivid, grounded scene from the start of the chapter's timeline. Capture the tension without revealing outcomes or skipping ahead."
+                        value={openingStyle}
+                        onChange={(e) => setOpeningStyle(e.target.value)}
+                      />
+                      <p className={`text-xs ${muted} mt-2 italic`}>
+                        Decide how you want the chapter to start
+                      </p>
                     </div>
                   </div>
                 )}
@@ -1224,6 +1243,23 @@ SOURCE MATERIALS FOLLOW
                       value={subject}
                       onChange={(e) => setSubject(e.target.value)}
                     />
+                  </div>
+
+                  <div>
+                    <label className={`block text-sm font-semibold ${subtle} mb-3`} style={{ fontFamily: 'Playfair Display, Georgia, serif' }}>
+                      Chapter Opening Style
+                    </label>
+                    <textarea
+                      className={`w-full p-4 rounded-lg ${input} transition-all font-medium`}
+                      style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}
+                      rows={3}
+                      placeholder="e.g., Open with a vivid, grounded scene from the start of the chapter's timeline. Capture the tension without revealing outcomes or skipping ahead."
+                      value={openingStyle}
+                      onChange={(e) => setOpeningStyle(e.target.value)}
+                    />
+                    <p className={`text-xs ${muted} mt-2 italic`}>
+                      Decide how you want the chapter to start (e.g., "Open with a vivid, grounded scene from the start of the chapter's timeline. Capture the tension without revealing outcomes or skipping ahead.")
+                    </p>
                   </div>
 
                   <div>
