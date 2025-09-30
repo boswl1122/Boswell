@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { Feather, Navigation } from "lucide-react";
+import { Navigation } from "lucide-react";
 
 export default function BoswellRun() {
   type Tab = "prep" | "generate";
@@ -595,11 +595,11 @@ SOURCE MATERIALS FOLLOW
         <div className="max-w-7xl mx-auto px-6 py-8 flex items-center justify-between">
           <div className="flex items-center gap-6">
             {/* Boswell logo */}
-            <Feather 
-              className="w-8 h-8" 
-              strokeWidth={1.5}
-              style={{ color: BRAND_COLOR }}
-              aria-label="Boswell" 
+            <img
+              src="/logo.png"
+              alt="Boswell"
+              className="w-8 h-8"
+              aria-label="Boswell"
             />
             <div>
               <h1 
