@@ -322,8 +322,14 @@ WRITING DIRECTIVES
  - When you reach an important moment, EXPAND it using NotebookLM outputs first (quotes, scene details, artifacts). You may add basic external context only if it’s obvious, factual, and necessary for reader understanding (e.g., what a stock split is, what AT&T was in 1994). Keep such context brief and neutral; if a detail isn’t in sources, omit it and log it in Editor’s Notes.
  - All detail should illuminate character, stakes, or context. Avoid generic filler; background is welcome when it clarifies or enriches the scene.
  - Use 8–12 sentence paragraphs, varied in rhythm.
- - No invented settings or sensory filler. Prefer scene details from NotebookLM Scene Cards. If a detail (room, smell, weather) isn’t sourced, leave it out.
+ - No invented settings or specific sensory filler. Use only sensory or environmental details that are either (a) directly supported by sources, or (b) safely inferred from broad context (e.g., time of year, region, or known conditions). Avoid high-inference or decorative imagery (smells, sounds, colors, or tactile detail) unless explicitly documented.
  - For crucial moments, slow time down — a 5-minute conversation may take 3–4 full paragraphs.
+ - SENSORY DISCIPLINE
+	  - Sensory description must come from logical inference, not imagination.
+	  - Acceptable inference: general atmosphere (season, climate, light, noise level typical of setting).
+	  - Unacceptable inference: specific, unverifiable imagery (smells, unique objects, colors, tastes, invented gestures).
+	  - When uncertain about a sensory detail’s factual grounding, omit it.
+    - Aim for atmosphere through pacing, tone, and observed action—not decorative description.
 4) SCENE DEVELOPMENT
  - Introduce every quote with scene framing (where, who, what just happened).
  - After each, pause for reaction and subtext (expressions, silences, what was implied).
@@ -403,6 +409,7 @@ SOURCE MATERIALS FOLLOW
     parts.push(`\nCRITICAL GENERATION INSTRUCTIONS
     - Write SLOWLY and CINEMATICALLY - luxuriate in important scenes
     - Each scene is an opportunity to immerse the reader - take your time
+    - Before adding any sensory description, pause to confirm it is either sourced or logically inevitable from context.
     - When you find a powerful moment in the research, expand it into a full scene
     - Do not rush through chronology - better to deeply explore fewer moments
     - Minimum 12,000 tokens through scenic depth and careful exploration
