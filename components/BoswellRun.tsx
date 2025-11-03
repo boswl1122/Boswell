@@ -321,7 +321,7 @@ WRITING DIRECTIVES
  - SLOW, PATIENT, IMMERSIVE writing that dwells in scenes rather than rushing through events.
  - When you reach an important moment, EXPAND it using NotebookLM outputs first (quotes, scene details, artifacts). You may add basic external context only if it’s obvious, factual, and necessary for reader understanding (e.g., what a stock split is, what AT&T was in 1994). Keep such context brief and neutral; if a detail isn’t in sources, omit it and log it in Editor’s Notes.
  - All detail should illuminate character, stakes, or context. Avoid generic filler; background is welcome when it clarifies or enriches the scene.
- - Use 8–12 sentence paragraphs, varied in rhythm.
+ - Use 1–6 sentence paragraphs, varied in rhythm.
  - No invented settings or specific sensory filler. Use only sensory or environmental details that are either (a) directly supported by sources, or (b) safely inferred from broad context (e.g., time of year, region, or known conditions). Avoid high-inference or decorative imagery (smells, sounds, colors, or tactile detail) unless explicitly documented.
  - For crucial moments, slow time down — a 5-minute conversation may take 3–4 full paragraphs.
  - SENSORY DISCIPLINE
